@@ -30,7 +30,8 @@ type ReqMsgChat struct {
 	Content string `json:"content"`
 }
 type RspMsgChat struct {
-	Status int32 `json:"status"`
+	Status int32  `json:"status"`
+	RetStr string `json:"retStr"`
 }
 
 // ReqMsgJoin 2-2 进聊天室

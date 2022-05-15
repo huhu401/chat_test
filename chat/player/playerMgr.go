@@ -14,9 +14,33 @@ type Mgr struct {
 
 var playerMgr *Mgr
 
+type RankElem struct {
+	word  string
+	times int
+}
+
+type TimesElem struct {
+	times []uint16
+	stamp int64
+}
+
+type History struct {
+	content map[int32][]string
+	sync.Mutex
+	frequency map[string]*TimesElem
+	rank      *RankElem
+}
+
+var history *History
+
 func BeforeMain() {
 	// 建立基础的管理器
 	newManager()
+	history = &History{
+		content:   map[int32][]string{},
+		Mutex:     sync.Mutex{},
+		frequency: map[string]*TimesElem{},
+	}
 }
 
 func newManager() (*gen_routine.Mgr, *gen_routine.Error) {

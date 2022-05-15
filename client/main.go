@@ -58,11 +58,12 @@ func main() {
 }
 
 func handleCmd(in string) error {
-	sl := strings.Split(in, " ")
+	sl := strings.SplitN(in, " ", 2)
 	switch sl[0] {
 	case "login":
-		roleId, _ := strconv.ParseInt(sl[1], 0, 64)
-		err := startClient(roleId, sl[2])
+		sl = strings.Split(sl[1], " ")
+		roleId, _ := strconv.ParseInt(sl[0], 0, 64)
+		err := startClient(roleId, sl[1])
 		if err != nil {
 			return err
 		}

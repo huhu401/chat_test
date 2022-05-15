@@ -33,3 +33,6 @@ const (
 	ErrorNo         = 0
 	ErrorFirstLogin = -100001 // 还未登录
 )
+
+// MaxFSec 统计时间周期最长秒数
+const MaxFSec = 600
